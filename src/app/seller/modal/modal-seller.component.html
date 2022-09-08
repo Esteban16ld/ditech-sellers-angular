@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{seller != null ? 'Editar Vendedor' : 'Nuevo Vendedor'}}</h1>
+
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="NAME">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input matInput [(ngModel)]="LAST_NAME">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Documento</mat-label>
+        <input matInput [(ngModel)]="DOCUMENT">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Sucursal</mat-label>
+        <mat-select [(ngModel)]="CITY_NAME">
+            <mat-option *ngFor="let city of listCities" [value]="city.description">
+              {{city.description}}
+            </mat-option>
+          </mat-select>
+    </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="seller != null ? editSeller() : addSeller()">Guardar</button>
+</div>
